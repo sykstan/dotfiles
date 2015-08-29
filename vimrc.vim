@@ -9,6 +9,19 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
+
+"so I recently (Sat 29 Aug 2015) changed the way my Vim works
+"previously I had a Vim folder in Dropbox and that contained 
+"the my vimrc.vim and the plugins I installed. 
+"Now I've decided to use Vundle to manage my plugins, and also
+"I'm switching from Dropbox to Github for my vimrc.vim
+"The idea is I clone https://github.com/sykstan/dotfiles.git
+"in my $HOME, ln -s the vimrc.vim there to $HOME/.vimrc
+"and then it will set up ~/.vim/ the same way across different 
+"systems. This will hopefully be much simpler than the MySys()
+"function method of determining where I was and adding Dropbox/Vim
+"to the runtimepath. Plugins will still be in .vim/bundle/
+
 " pathogen (Thur 27 March 2014)
 " using Vundle now (Sat 29 Aug 2015)
 "execute pathogen#infect()
@@ -21,8 +34,6 @@ set nocompatible
 filetype off   " required
 
 " set the runtime path to include Vundle and initialize
-"set runtimepath+=~/.vim/bundle/Vundle.vim
-" I had to edit the above line for my setup
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
@@ -47,6 +58,25 @@ Plugin 'VundleVim/Vundle.vim'
 "" Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+"""" my plugins :)
+" Slimv, for Common Lisp / Scheme
+Plugin 'vim-scripts/slimv.vim'
+" vim-latex
+Plugin 'vim-latex/vim-latex'
+" NERD-tree
+Plugin 'scrooloose/nerdtree'
+
+""" colorschemes!! """
+Plugin 'mhumeSF/one-dark.vim'
+Plugin 'atweiden/vim-colors-behelit'
+Plugin 'dfxyz/CandyPaper.vim'
+Plugin 'dsolstad/vim-wombat256i'
+Plugin 'cocopon/iceberg.vim'
+Plugin 'marlun/vim-starwars'    "darth & leya
+Plugin 'noahfrederick/vim-hemisu'
+Plugin 'chriskempson/vim-tomorrow-theme'    "Tomorrow-Night-{Blue|Bright|Eighties|Night}
+Plugin 'goatslacker/mango.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -62,6 +92,11 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 """"""""""""" end Vundle section """"""""""""""""""
+
+" set colorscheme 
+colorscheme torte   " good default
+colorscheme wombat256i
+colorscheme candypaper
 
 
 " set the <leader> key, this was previously unset
@@ -194,9 +229,6 @@ set number
 " copies to system buffer, but I can't use the mouse to get block selection
 map <C-c> "+y<CR>
 
-" set colorscheme 
-color torte
-colorscheme torte
 
 " vim uses the monospace font determine by system settings
 " I like gvim to use something other than Monospace
@@ -239,32 +271,32 @@ set visualbell noeb t_vb=
 " on the NCI and MSG these will be turned off
 " since they complain
 "
-if (MySys()=="home")
-    " interesting linenumbers
-    set relativenumber  
-    " can undo even if file is closed and reopened
-    set undofile
-
-    "" disable arrow keys !! (Fri 13 April 2012)
-    "nnoremap <up> <nop>
-    "nnoremap <down> <nop>
-    "nnoremap <left> <nop>
-    "nnoremap <right> <nop>
-    "inoremap <up> <nop>
-    "inoremap <down> <nop>
-    "inoremap <left> <nop>
-    "inoremap <right> <nop>
-
-    " shows when code gets too long
-    set colorcolumn=85
-
-
-else  "for MSG and NCI
-    "inform the guard for the taglist plugin
-    "not to load, as this variable is already defined
-    let loaded_taglist = 1
-
-endif
+"if (MySys()=="home")
+"    " interesting linenumbers
+"    set relativenumber  
+"    " can undo even if file is closed and reopened
+"    set undofile
+"
+"    "" disable arrow keys !! (Fri 13 April 2012)
+"    "nnoremap <up> <nop>
+"    "nnoremap <down> <nop>
+"    "nnoremap <left> <nop>
+"    "nnoremap <right> <nop>
+"    "inoremap <up> <nop>
+"    "inoremap <down> <nop>
+"    "inoremap <left> <nop>
+"    "inoremap <right> <nop>
+"
+"    " shows when code gets too long
+"    set colorcolumn=85
+"
+"
+"else  "for MSG and NCI
+"    "inform the guard for the taglist plugin
+"    "not to load, as this variable is already defined
+"    let loaded_taglist = 1
+"
+"endif
 
 """"""""" search and replace """"""""""
 " search case insensitive unless containing capitals
