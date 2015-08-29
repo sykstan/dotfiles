@@ -18,6 +18,8 @@
 set nocompatible
 
 """""" here begins the Vundle section """""""""
+" begin by installing Vundle on new systems
+"git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 filetype off   " required
 
 " set the runtime path to include Vundle and initialize
