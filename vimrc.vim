@@ -96,9 +96,8 @@ filetype plugin indent on    " required
 """"""""""""" end Vundle section """"""""""""""""""
 
 " set colorscheme 
-colorscheme torte   " good default
-colorscheme wombat256i
-colorscheme candypaper
+"colorscheme torte   " good default
+colorscheme tomorrow-night-bright
 
 
 " set the <leader> key, this was previously unset
