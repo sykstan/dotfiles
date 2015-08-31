@@ -95,6 +95,9 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 """"""""""""" end Vundle section """"""""""""""""""
 
+" to start NERDTree
+map <F2> :NERDTreeToggle
+
 " set colorscheme 
 "colorscheme torte   " good default
 colorscheme tomorrow-night-bright
@@ -104,7 +107,9 @@ colorscheme tomorrow-night-bright
 " but I need it for the vim-latex plugin
 " backslash is the default, the comma is also pretty common
 " the extra backslash is for escaping
-let mapleader="\\"
+"let mapleader="\\"
+" try comma
+let mapleader = ","
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -242,6 +247,12 @@ map <C-c> "+y<CR>
 " inserts newline in normal mode
 nnoremap nl o<Esc>
 nnoremap NL O<Esc>
+" NERDTree
+map <F2> :NERDTreeToggle<CR>
+noremap <Leader>nt :NERDTreeToggle<CR>
+
+
+
 
 " turns on both cursor highlights;
 nnoremap <leader>c :set cursorline! cursorcolumn! <CR>
