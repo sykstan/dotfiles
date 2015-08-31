@@ -100,7 +100,7 @@ map <F2> :NERDTreeToggle
 
 " set colorscheme 
 "colorscheme torte   " good default
-colorscheme tomorrow-night-bright
+colorscheme Tomorrow-Night-Bright
 
 
 " set the <leader> key, this was previously unset
@@ -252,8 +252,6 @@ map <F2> :NERDTreeToggle<CR>
 noremap <Leader>nt :NERDTreeToggle<CR>
 
 
-
-
 " turns on both cursor highlights;
 nnoremap <leader>c :set cursorline! cursorcolumn! <CR>
 
@@ -348,4 +346,6 @@ let g:tex_flavor = 'latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_MultipleCompileFormats='pdf, aux'
 
-
+" no fancy arrow characters for NERDTree (Mon 31 Aug 2015)
+" or just do export LC_ALL=en_US.utf-8; export LANG="$LC_ALL" in .bashrc
+"let g:NERDTreeDirArrows=0
