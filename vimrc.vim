@@ -227,6 +227,8 @@ set expandtab
 set shiftwidth=4
 
 " I like line numbers to be visible 
+" hybrid line numbers
+set relativenumber
 set number
 
 " this ensures that Ctrl-c copies to the system clipboard/buffer
@@ -277,13 +279,12 @@ hi Cursorcolumn   ctermbg=black guifg=lightgrey gui=bold,italic
 " get rid of annoying beeps and flashes
 set visualbell noeb t_vb=
 
+
 " Only set these when at home
 " on the NCI and MSG these will be turned off
 " since they complain
 "
 "if (MySys()=="home")
-"    " interesting linenumbers
-"    set relativenumber  
 "    " can undo even if file is closed and reopened
 "    set undofile
 "
