@@ -229,7 +229,6 @@ set shiftwidth=4
 " I like line numbers to be visible 
 " hybrid line numbers
 set relativenumber
-set number
 
 " this ensures that Ctrl-c copies to the system clipboard/buffer
 " so that I can use visual block selection conveniently
