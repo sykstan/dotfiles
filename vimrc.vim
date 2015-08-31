@@ -228,6 +228,7 @@ set shiftwidth=4
 
 " I like line numbers to be visible 
 " hybrid line numbers
+set number
 set relativenumber
 
 " this ensures that Ctrl-c copies to the system clipboard/buffer
