@@ -263,7 +263,10 @@ nnoremap <leader>c :set cursorline! cursorcolumn! <CR>
 " xmodmap -e 'clear lock' -e 'keycode 0x42 = Escape'
 " use xmodmap and xev to check results
 "inoremap ii <Esc>
-"
+
+" switch buffers easily
+:nnoremap <F5> :buffers<CR>:buffer<Space>
+
 """"""""" END KEYBINDINGS """""""""""""
 
 
