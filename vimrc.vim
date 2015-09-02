@@ -333,8 +333,9 @@ map <F3> :set invpaste<CR>
 set pastetoggle=<F3>
 
 " for preserving folding (Thurs 19 July 2012)
-au BufWinLeave * mkview
-au BufWinEnter * silent loadview
+" added ? in front of * to silence errors (Wed 2 Sept 2015)
+au BufWinLeave ?* mkview 1
+au BufWinEnter ?* silent loadview 1
 
 """""""" LaTeX-Suite """""""""""""""""
 " LaTeX-suite recommendations (Thur 27 March 2014)
