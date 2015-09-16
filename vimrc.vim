@@ -67,6 +67,10 @@ Plugin 'vim-scripts/slimv.vim'
 Plugin 'vim-latex/vim-latex'
 " NERD-tree
 Plugin 'scrooloose/nerdtree'
+" Conque Shell, run interactive programs in Vim buffer
+"Plugin 'vim-scripts/Conque-Shell'
+" currently the above doesn't work, using this fork in the meantime
+Plugin 'lrvick/Conque-Shell'
 
 """ colorschemes!! """
 Plugin 'mhumeSF/one-dark.vim'
