@@ -82,6 +82,8 @@ Plugin 'marlun/vim-starwars'    "darth & leya
 Plugin 'noahfrederick/vim-hemisu'
 Plugin 'chriskempson/vim-tomorrow-theme'    "Tomorrow-Night-{Blue|Bright|Eighties|Night}
 Plugin 'goatslacker/mango.vim'
+Plugin 'aperezdc/vim-elrond'
+Plugin 'changyuheng/color-scheme-holokai-for-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -104,7 +106,7 @@ map <F2> :NERDTreeToggle
 
 " set colorscheme 
 "colorscheme torte   " good default
-colorscheme Tomorrow-Night-Bright
+colorscheme elrond
 
 
 " set the <leader> key, this was previously unset
