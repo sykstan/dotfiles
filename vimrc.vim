@@ -358,3 +358,10 @@ let g:Tex_MultipleCompileFormats='pdf, aux'
 " no fancy arrow characters for NERDTree (Mon 31 Aug 2015)
 " or just do export LC_ALL=en_US.utf-8; export LANG="$LC_ALL" in .bashrc
 "let g:NERDTreeDirArrows=0
+"
+"
+""""""""" Code Development """""""""""""
+" map F4 to run current file in bash
+map <F4> :!bash % <CR>
+" and F6 to Python3
+map <F6> :!python3 % <CR>
