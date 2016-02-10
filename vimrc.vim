@@ -334,9 +334,9 @@ set wrap
 au FocusLost * :wa
 
 
-" toggle paste to F3 (Wed 11 July 2012)
-map <F3> :set invpaste<CR>
-set pastetoggle=<F3>
+" toggle paste to F3 (Wed 11 July 2012; changed to F6 Wed 10 Feb 2016)
+map <F6> :set invpaste<CR>
+set pastetoggle=<F6>
 
 " for preserving folding (Thurs 19 July 2012)
 " added ? in front of * to silence errors (Wed 2 Sept 2015)
@@ -363,7 +363,10 @@ let g:Tex_MultipleCompileFormats='pdf, aux'
 "
 "
 """"""""" Code Development """""""""""""
-" map F4 to run current file in bash
-map <F4> :!bash % <CR>
-" and F6 to Python3
-map <F6> :!python3 % <CR>
+" map F4 to execute current file 
+autocmd FileType sh nnoremap <F4> :!bash % <CR>
+autocmd FileType python nnoremap <F4> :!python3 % <CR>
+
+" map F5 to execute selection; note the 'v' for visual/select mode
+autocmd FileType sh vnoremap <F3> :w !bash <CR>
+autocmd FileType python vnoremap <F3> :w !python3 <CR>
