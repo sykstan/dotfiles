@@ -324,7 +324,7 @@ set ignorecase
 set smartcase
 
 " assume global (g) substitution
-set gdefault
+"set gdefault
 
 """"""""" long lines """"""""""""""""""
 set wrap
