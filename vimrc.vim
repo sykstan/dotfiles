@@ -73,8 +73,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'lrvick/Conque-Shell'
 
 """ colorschemes!! """
-Plugin 'mhumeSF/one-dark.vim'
-Plugin 'atweiden/vim-colors-behelit'
 Plugin 'dfxyz/CandyPaper.vim'
 Plugin 'dsolstad/vim-wombat256i'
 Plugin 'cocopon/iceberg.vim'
