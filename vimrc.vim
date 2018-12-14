@@ -37,7 +37,8 @@ filetype off   " required
 
 " set the runtime path to include Vundle and initialize
 set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call vundle#begin('~/.vim/bundle')
+"call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -82,7 +83,7 @@ Plugin 'chriskempson/vim-tomorrow-theme'    "Tomorrow-Night-{Blue|Bright|Eightie
 Plugin 'goatslacker/mango.vim'
 Plugin 'aperezdc/vim-elrond'
 Plugin 'changyuheng/color-scheme-holokai-for-vim'
-
+"
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
