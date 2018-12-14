@@ -103,8 +103,8 @@ filetype plugin indent on    " required
 map <F2> :NERDTreeToggle
 
 " set colorscheme 
-"colorscheme torte   " good default
-colorscheme elrond
+colorscheme torte   " good default
+"colorscheme elrond
 
 
 " set the <leader> key, this was previously unset
@@ -248,6 +248,9 @@ map <C-c> "+y<CR>
 "  seem to figure out where it's getting it from)
 " Anyway,...
 "set guifont=DejaVu\ Sans\ Mono\ 9
+
+" for Windows
+set guifont=Consolas
 
 """"""""" MY KEYBINDINGS """"""""""""""
 " inserts newline in normal mode
