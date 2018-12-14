@@ -5,9 +5,9 @@
 "
 " To use it, copy it to
 "     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
+"        Amiga:  s:.vimrc
 "  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+"       for OpenVMS:  sys$login:.vimrc
 
 
 "so I recently (Sat 29 Aug 2015) changed the way my Vim works
