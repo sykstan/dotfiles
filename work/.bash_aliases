@@ -11,3 +11,5 @@ alias sds="ssh -i ~/.ssh/stan_carsales stan@ds-server.carsales.office"
 
 # local jupyter startup
 alias ljn="jt -T -N -t onedork -f code -fs 11 -cellw 98% &&  jupyter notebook --port=7777"
+
+echo ".bash_aliases run"
