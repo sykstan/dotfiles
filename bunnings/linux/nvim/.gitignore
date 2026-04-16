@@ -1,0 +1,6 @@
+# LazyVim neovim config
+# Plugins install to ~/.local/share/nvim — NOT here
+# Only your config files live here
+
+# State and cache (managed by lazy.nvim at runtime)
+/lazy-lock.json

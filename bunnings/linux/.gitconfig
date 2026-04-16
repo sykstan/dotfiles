@@ -1,0 +1,14 @@
+[core]
+	    pager = delta
+
+[interactive]
+	    diffFilter = delta --color-only
+
+[delta]
+	    navigate = true    # use 'n' and 'p' to jump between files
+	    side-by-side = true # This gives you the VS Code-style diff in the terminal
+[user]
+	email = 104175046+stanbun@users.noreply.github.com
+	name = STan1
+[credential]
+	helper = store

@@ -56,5 +56,11 @@ docs/_build/
 # PyBuilder
 target/
 
-# vim bundles (managed by Vundle)
-bundle/
+# dotfiles: machine-specific local overrides
+.bashrc.local
+.zshrc.local
+
+# dotfiles: tool state / cache (not config)
+.copilot/cache/
+.copilot/session-state/
+
