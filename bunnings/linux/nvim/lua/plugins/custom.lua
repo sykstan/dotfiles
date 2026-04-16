@@ -22,6 +22,18 @@ return {
   -- Kanagawa: inspired by Japanese woodblock art. Variants: wave, dragon, lotus
   { "rebelot/kanagawa.nvim", priority = 1000, opts = { theme = "wave" } },
 
+  -- Disable treesitter parsers that require tree-sitter-cli to compile
+  -- (tsx fails on Azure ML instances without the build toolchain)
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "python", "lua", "sql", "bash", "json", "yaml", "toml",
+        "markdown", "markdown_inline", "vim", "vimdoc",
+      },
+    },
+  },
+
   -- ── Active theme ────────────────────────────────────────────────────────────
   -- Change "catppuccin" to any of: tokyonight, gruvbox-material, rose-pine, kanagawa
   {
