@@ -132,6 +132,9 @@ alias -g CJ='| python3 -m json.tool' # Pretty print JSON
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# source .bashrc.local to get proxies, EDITOR, etc.
+[ -f ~/.bashrc.local ] && source ~/.bashrc.local
+
 # in yazi drop to cwd when exiting
 # press y to start yazi, and q to quit, Q to quit to original dir
 function y() {
