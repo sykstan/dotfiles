@@ -8,20 +8,23 @@ On a fresh machine, run these in order:
 # 1. Clone the repo (git must be installed)
 git clone https://github.com/sykstan/dotfiles.git ~/localfiles/dotfiles
 
-# 2. Create your machine-specific config (not tracked in repo)
+# 2. Install Vundle to prevent error messages on Vim after vimrc.vim symlinked 
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# 3. Create your machine-specific config (not tracked in repo)
 cat > ~/.bashrc.local <<'EOF'
 export http_proxy="http://proxy.example.com:80"
 export https_proxy="http://proxy.example.com:80"
 conda activate azureml_py38   # or whatever env is relevant
 EOF
 
-# 3. Install tools (takes a few minutes)
+# 4. Install tools (takes a few minutes)
 bash ~/localfiles/dotfiles/bunnings/install.sh
 
-# 4. Symlink dotfiles
+# 5. Symlink dotfiles
 bash ~/localfiles/dotfiles/bunnings/setup.sh
 
-# 5. Start zsh
+# 6. Start zsh
 exec zsh
 ```
 
