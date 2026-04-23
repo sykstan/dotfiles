@@ -139,9 +139,11 @@ fi
 
 # ── GitHub Copilot CLI ────────────────────────────────────────────────────────
 echo "==> Installing GitHub Copilot CLI"
-if installed copilot; then
-    echo "  [skip] copilot already installed"
+_copilot_path="$(command -v copilot 2>/dev/null)"
+if [[ -n "$_copilot_path" && "$_copilot_path" != *".vscode-server"* ]]; then
+    echo "  [skip] copilot already installed ($_copilot_path)"
 else
+    [[ "$_copilot_path" == *".vscode-server"* ]] && echo "  [info] ignoring VS Code extension copilot, installing CLI..."
     if curl -fsSL https://gh.io/copilot-install | bash; then
         echo "  [ok] copilot installed"
     else
