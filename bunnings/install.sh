@@ -45,7 +45,7 @@ apt_install \
     tldr \
     tree
 apt_install btop htop
-apt_install delta — symlink to canonical names
+# apt_install git-delta  # symlink to canonical names, can skip, installing separately below
 # so tools like fzf previews and scripts can use 'fd' and 'bat'
 if ! installed fd && installed fdfind; then
     ln -sf "$(which fdfind)" "$HOME/.local/bin/fd"
