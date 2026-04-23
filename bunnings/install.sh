@@ -152,6 +152,29 @@ else
     fi
 fi
 
+# ── Snowflake ODBC driver ─────────────────────────────────────────────────────
+# Required for R's odbc package to connect to Snowflake (Python uses snowflake-connector-python, which doesn't need this).
+# Ubuntu 22.04 ships libodbcinst.so.2 but the Snowflake driver looks for .so.1 — create symlink if missing.
+echo "==> Installing Snowflake ODBC driver"
+if odbcinst -q -d 2>/dev/null | grep -q SnowflakeDSIIDriver; then
+    echo "  [skip] Snowflake ODBC driver already installed"
+else
+    SNOWFLAKE_ODBC_VERSION=$(curl -s "https://api.github.com/repos/snowflakedb/snowflake-odbc/releases/latest" |
+        grep -Po '"tag_name": "\K[^"]*')
+    curl -Lo /tmp/snowflake-odbc.deb \
+        "https://sfc-repo.snowflakecomputing.com/odbc/linux/${SNOWFLAKE_ODBC_VERSION}/snowflake-odbc-${SNOWFLAKE_ODBC_VERSION}.x86_64.deb"
+    sudo dpkg -i /tmp/snowflake-odbc.deb
+    rm /tmp/snowflake-odbc.deb
+    echo "  [ok] Snowflake ODBC ${SNOWFLAKE_ODBC_VERSION} installed"
+fi
+# libodbcinst.so.1 symlink — Snowflake driver expects .so.1, Ubuntu provides .so.2
+if [ ! -f /usr/lib/x86_64-linux-gnu/libodbcinst.so.1 ]; then
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libodbcinst.so.2 /usr/lib/x86_64-linux-gnu/libodbcinst.so.1
+    echo "  [linked] libodbcinst.so.1 → libodbcinst.so.2"
+else
+    echo "  [skip] libodbcinst.so.1 symlink already exists"
+fi
+
 # ── oh-my-zsh + plugins ────────────────────────────────────────────────────────
 echo "==> Installing oh-my-zsh"
 if [ -d "$HOME/.oh-my-zsh" ]; then
