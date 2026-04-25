@@ -95,6 +95,21 @@ mkdir -p "$HOME/.local/bin"
 ln -sf "$NVIM_INSTALL_DIR/bin/nvim" "$HOME/.local/bin/nvim"
 echo "  [linked] ~/.local/bin/nvim → $NVIM_INSTALL_DIR/bin/nvim"
 
+# ── lazyvim plugins ───────────────────────────────────────────────────────────
+# lazy.nvim bootstraps itself on first nvim launch; this triggers it headlessly
+# so plugins are ready without the user needing to open nvim manually first.
+# Requires setup.sh to have been run first (so ~/.config/nvim is symlinked).
+echo "==> Bootstrapping LazyVim plugins"
+if [ ! -f "$HOME/.config/nvim/init.lua" ]; then
+    echo "  [skip] ~/.config/nvim/init.lua not found — run setup.sh first, then re-run install.sh"
+elif [ -d "$HOME/.local/share/nvim/lazy/LazyVim" ]; then
+    echo "  [skip] LazyVim already installed"
+else
+    echo "  [info] Running nvim headless to install plugins (may take a moment)..."
+    "$HOME/.local/bin/nvim" --headless "+Lazy! sync" +qa 2>&1 \
+        || echo "  [warn] LazyVim install may have failed — open nvim manually to retry"
+fi
+
 # ── delta (git pager) ─────────────────────────────────────────────────────────
 # Not available via apt on Ubuntu 22.04 — install via .deb from GitHub releases
 echo "==> Installing delta"
