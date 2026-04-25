@@ -1,0 +1,11 @@
+* text=auto
+
+# Force LF for shell scripts (avoid CRLF breakage on Windows checkout)
+*.sh text eol=lf
+.bashrc text eol=lf
+.zshrc text eol=lf
+.bash_aliases text eol=lf
+.bash_profile text eol=lf
+.tmux.conf text eol=lf
+.vimrc text eol=lf
+vimrc.vim text eol=lf

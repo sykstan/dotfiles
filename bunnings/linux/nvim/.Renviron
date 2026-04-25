@@ -1,0 +1,5 @@
+# personal R dependencies installed here outside of a project
+# R_LIBS_USER
+
+# cache where renv installs project related dependencies
+RENV_PATHS_CACHE=~/cloudfiles/code/cache/renv_cache

@@ -125,15 +125,15 @@ endif
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
-else
-  set backup		" keep a backup file
-endif
+" if has("vms")
+"   set nobackup		" do not keep a backup file, use versions instead
+" else
+"   set backup		" keep a backup file
+" endif
 
 " backup directory for .ext~ files (Thurs 8 Aug 2013)
 " for swap files (.ext.swp), it is 'set directory='
-set backupdir=$HOME/.vim/backups
+" set backupdir=$HOME/.vim/backups
 
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
