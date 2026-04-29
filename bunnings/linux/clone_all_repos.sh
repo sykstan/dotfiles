@@ -21,6 +21,8 @@ REPOS=(
     https://github.com/Bunnings-Data-and-Analytics/ao-consumer-flybuys-demographic-models.git
     https://github.com/Bunnings-Data-and-Analytics/ds-all-seeing-eye.git
     https://github.com/Bunnings-Data-and-Analytics/ds-census-upload.git
+    https://github.com/Bunnings-Data-and-Analytics/ao-dynadaily-tactical-migration.git
+    https://github.com/Bunnings-Data-and-Analytics/dna-terraform-modules.git
 )
 
 # CLONE_DIR="${1:-$HOME/repos}"
