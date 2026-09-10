@@ -117,22 +117,63 @@ if ! shopt -oq posix; then
 fi
 
 # >>> conda initialize >>>
+# Disabled: this machine uses uv for Python environment management, not conda.
+# conda init auto-activates base and puts /anaconda/bin on PATH, which shadows
+# uv-managed .venv/bin/python. Commented out rather than deleted so it can be
+# re-enabled if needed. See also: auto-activate uv venv block below.
+#
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/anaconda/etc/profile.d/conda.sh" ]; then
-        . "/anaconda/etc/profile.d/conda.sh"
-    else
-        export PATH="/anaconda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# __conda_setup="$('/anaconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/anaconda/etc/profile.d/conda.sh" ]; then
+#         . "/anaconda/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/anaconda/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
 # <<< conda initialize <<<
 
 # Machine-specific overrides (not tracked in repo)
 [ -f "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
+
+# --- Auto-activate uv venv ---------------------------------------------------
+# Why: When opening a terminal in a uv-managed Python project, bare `python`,
+# `pytest`, `ruff`, `mypy` should resolve to the project's .venv — not system
+# Python or conda.
+#
+# How it works:
+#   1. Walk up from $PWD looking for pyproject.toml (marks a Python project root)
+#   2. If that directory also has .venv/bin/python (uv creates this), prepend
+#      .venv/bin to PATH — same effect as `source .venv/bin/activate` but lighter
+#   3. Set VIRTUAL_ENV so tools that check for it (pip, poetry, etc.) behave
+#   4. No-op if already activated or if no uv project is found
+#
+# Limitation: this runs once at shell startup, not on every `cd`. If you navigate
+# to a different project within the same shell, bare `python` still points at the
+# original project's venv. For cross-project safety (especially AI agents that
+# navigate between projects), use `uv run python` which resolves per-invocation.
+#
+# Safe because: only prepends to PATH (doesn't clobber), only activates for the
+# current shell, and only when a real .venv exists alongside pyproject.toml.
+_auto_activate_uv_venv() {
+    # Skip if a valid virtualenv is already active
+    [ -n "${VIRTUAL_ENV:-}" ] && return
+
+    local dir="$PWD"
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/pyproject.toml" ] && [ -x "$dir/.venv/bin/python" ]; then
+            export VIRTUAL_ENV="$dir/.venv"
+            export PATH="$dir/.venv/bin:$PATH"
+            return
+        fi
+        dir="$(dirname "$dir")"
+    done
+}
+_auto_activate_uv_venv
+# --- End auto-activate --------------------------------------------------------
 
 
 # in yazi drop to cwd when exiting

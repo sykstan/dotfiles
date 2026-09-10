@@ -147,3 +147,21 @@ function y() {
 
 # init zoxide
 command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
+
+# cortex CLI: bypass proxy (Azure ML injects proxy; PrivateLink needs direct access)
+alias cortex='NO_PROXY="snowflakecomputing.com${NO_PROXY:+,${NO_PROXY}}" no_proxy="snowflakecomputing.com${no_proxy:+,${no_proxy}}" ~/.local/bin/cortex'
+export PATH="$HOME/.npm-global/bin:$PATH"
+
+# AI Metrics Tools (ai-engineering-fluency + codeburn)
+alias aif='ai-engineering-fluency'
+alias aif-tokens='ai-engineering-fluency usage --models'
+alias aif-env='ai-engineering-fluency environmental'
+alias aif-fluency='ai-engineering-fluency fluency'
+alias aif-stats='ai-engineering-fluency stats'
+
+alias burn='codeburn'
+alias burn-cost='codeburn status'
+alias burn-project='codeburn report -p month'
+alias burn-today='codeburn today'
+alias burn-optimize='codeburn optimize'
+alias burn-export='codeburn export -f json'

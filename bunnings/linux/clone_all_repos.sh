@@ -12,6 +12,9 @@ REPOS=(
     https://github.com/Bunnings-Data-and-Analytics/edp-airflow-dags.git
     https://github.com/Bunnings-Data-and-Analytics/edp-dbt.git
     https://github.com/Bunnings-Data-and-Analytics/edp-snowflake.git
+    https://github.com/Bunnings-Data-and-Analytics/dna-terraform-modules.git
+    https://github.com/Bunnings-Data-and-Analytics/edp-infra-airflow.git
+    https://github.com/Bunnings-Data-and-Analytics/edp-apps-metadata-framework-lib.git
     https://github.com/Bunnings-Data-and-Analytics/ao-merchandising-mdo-backend.git
     https://github.com/Bunnings-Data-and-Analytics/ds-merchandising-mdo-frontend.git
     https://github.com/Bunnings-Data-and-Analytics/ao-consumer-flybuys-rfm-segmentation.git
@@ -22,7 +25,8 @@ REPOS=(
     https://github.com/Bunnings-Data-and-Analytics/ds-all-seeing-eye.git
     https://github.com/Bunnings-Data-and-Analytics/ds-census-upload.git
     https://github.com/Bunnings-Data-and-Analytics/ao-dynadaily-tactical-migration.git
-    https://github.com/Bunnings-Data-and-Analytics/dna-terraform-modules.git
+    https://github.com/Bunnings-Data-and-Analytics/ml-cookiecutter.git
+    https://github.com/Bunnings-Data-and-Analytics/ml-aml-validation.git
 )
 
 # CLONE_DIR="${1:-$HOME/repos}"
