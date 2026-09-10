@@ -150,6 +150,15 @@ command -v zoxide &>/dev/null && eval "$(zoxide init zsh)"
 
 # cortex CLI: bypass proxy (Azure ML injects proxy; PrivateLink needs direct access)
 alias cortex='NO_PROXY="snowflakecomputing.com${NO_PROXY:+,${NO_PROXY}}" no_proxy="snowflakecomputing.com${no_proxy:+,${no_proxy}}" ~/.local/bin/cortex'
+
+# Global proxy bypass for internal-only endpoints (Azure ML compute instances inject
+# http_proxy/https_proxy for public internet access, but internal Private Link / VNet-only
+# hosts like Snowflake and our internal MLflow servers must NOT go through that proxy, or
+# connections fail with "Tunnel connection failed: 503 Service Unavailable" / squid
+# ERR_DNS_FAIL. Added 2026-09-10 (mirrors the same fix in .bashrc — zsh is the actual
+# day-to-day interactive shell here, .bashrc alone wasn't enough).
+export no_proxy="${no_proxy:+$no_proxy,}snowflakecomputing.com,.dna.bunnings.com.au"
+export NO_PROXY="$no_proxy"
 export PATH="$HOME/.npm-global/bin:$PATH"
 
 # AI Metrics Tools (ai-engineering-fluency + codeburn)
