@@ -141,6 +141,36 @@ apt_install gh
 # https://www.gh-dash.dev/getting-started/usage/
 gh extension install dlvhdr/gh-dash
 
+# ── gh auth + git credentials ─────────────────────────────────────────────────
+# Wires gh in as the git credential helper so push/pull over https just work,
+# and sets global git identity from the authenticated gh user (using their
+# GitHub noreply email so pushes aren't rejected for exposing a private email).
+echo "==> Configuring gh auth + git credentials"
+if gh auth status &>/dev/null; then
+    echo "  [skip] gh already authenticated"
+else
+    echo "  [info] Not authenticated with gh — launching login flow"
+    gh auth login
+fi
+
+if git config --global --get-regexp '^credential\.' 2>/dev/null | grep -q "gh auth git-credential"; then
+    echo "  [skip] git credential helper already set up for gh"
+else
+    gh auth setup-git
+    echo "  [ok] git credential helper configured via gh"
+fi
+
+if [ -n "$(git config --global user.name 2>/dev/null)" ] && [ -n "$(git config --global user.email 2>/dev/null)" ]; then
+    echo "  [skip] git user.name/user.email already configured"
+else
+    gh_login=$(gh api user --jq '.login')
+    gh_id=$(gh api user --jq '.id')
+    gh_name=$(gh api user --jq '.name // .login')
+    git config --global user.name "$gh_name"
+    git config --global user.email "${gh_id}+${gh_login}@users.noreply.github.com"
+    echo "  [ok] git identity set to $gh_name <${gh_id}+${gh_login}@users.noreply.github.com>"
+fi
+
 # ── lazygit ───────────────────────────────────────────────────────────────────
 echo "==> Installing lazygit"
 if installed lazygit; then
