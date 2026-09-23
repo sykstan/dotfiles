@@ -14,6 +14,9 @@ if [ -z "${http_proxy:-}" ]; then
     echo ""
 fi
 
+# ensure ~/.local/bin exists
+mkdir -p "$HOME/.local/bin"
+
 # ── Helpers ────────────────────────────────────────────────────────────────────
 installed() { command -v "$1" &>/dev/null; }
 
@@ -91,7 +94,7 @@ else
     rm /tmp/nvim.tar.gz
     echo "  [ok] nvim ${NVIM_VERSION} installed to $NVIM_INSTALL_DIR"
 fi
-mkdir -p "$HOME/.local/bin"
+
 ln -sf "$NVIM_INSTALL_DIR/bin/nvim" "$HOME/.local/bin/nvim"
 echo "  [linked] ~/.local/bin/nvim → $NVIM_INSTALL_DIR/bin/nvim"
 
