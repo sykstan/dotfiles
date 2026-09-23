@@ -75,6 +75,22 @@ else
     curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
 
+# ── ruff / mypy ───────────────────────────────────────────────────────────────
+# Installed as global uv tools (uv's pipx equivalent) rather than per-venv, so
+# they're on PATH for pre-commit hooks and ad-hoc linting regardless of which
+# project venv (if any) is active.
+echo "==> Installing ruff + mypy (uv tools)"
+if installed ruff; then
+    echo "  [skip] ruff already installed"
+else
+    uv tool install ruff
+fi
+if installed mypy; then
+    echo "  [skip] mypy already installed"
+else
+    uv tool install mypy
+fi
+
 # ── neovim ────────────────────────────────────────────────────────────────────
 # Binary install from GitHub releases — allows version pinning and easy upgrades.
 # choosing 0.11.7 due to 0.12's upgrade causing issues with shift+number characters
