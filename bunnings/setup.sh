@@ -43,6 +43,8 @@ backup_and_link "$DOTFILES_DIR/.gitconfig" "$HOME/.gitconfig"
 backup_and_link "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 backup_and_link "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
 backup_and_link "$DOTFILES_DIR/lazygit/config.yml" "$HOME_CONFIG_DIR/lazygit/config.yml"
+# gh CLI config — tracked mainly for the `co: pr checkout` alias; rest is stock defaults
+backup_and_link "$DOTFILES_DIR/gh/config.yml" "$HOME_CONFIG_DIR/gh/config.yml"
 backup_and_link "$DOTFILES_DIR/.Renviron" "$HOME/.Renviron"
 backup_and_link "$REPO_ROOT/vimrc.vim" "$HOME/.vimrc"
 
